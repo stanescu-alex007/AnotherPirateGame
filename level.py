@@ -6,6 +6,7 @@ from player import Player
 class Level:
     def __init__(self, tmx_map):
         self.display_surface = pygame.display.get_surface()
+        self.collision_sprites = pygame.sprite.Group()
 
         # groups
         self.all_sprites = pygame.sprite.Group()
@@ -14,11 +15,11 @@ class Level:
 
     def setup(self, tmx_map):
         for x, y, surf in tmx_map.get_layer_by_name("Terrain").tiles():
-            Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
+            Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, (self.all_sprites, self.collision_sprites))
 
         for obj in tmx_map.get_layer_by_name("Objects"):
             if obj.name == "player":
-                Player((obj.x, obj.y), self.all_sprites)
+                Player((obj.x, obj.y), self.all_sprites, self.collision_sprites)
                 print(obj.x)
                 print(obj.y)
 

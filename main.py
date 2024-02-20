@@ -11,7 +11,7 @@ class Game:
         pygame.display.set_caption("Super Pirate World")
         self.clock = pygame.time.Clock()
 
-        self.tmx_maps = {0: load_pygame(join("C:/AnotherPirateGame/ImportantStuff", "data", "levels", "omni.tmx"))}
+        self.tmx_maps = {0: load_pygame(join("/AnotherPirateGame/AnotherPirateGame/ImportantStuff", "data", "levels", "omni.tmx"))}
         print(self.tmx_maps)
 
         self.current_stage = Level(self.tmx_maps[0])
